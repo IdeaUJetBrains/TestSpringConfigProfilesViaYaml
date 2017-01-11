@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@SpringBootApplication (exclude={DataSourceAutoConfiguration.class})
-public class ExampleController {
+@Profile("production")
+public class ExampleControllerProduction {
 
     @Autowired
     private Config config;
 
-    @RequestMapping("ExampleController")
+    @RequestMapping("ExampleControllerProduction")
     public String home( ) {
 
         return "Hello World!"
@@ -29,9 +29,5 @@ public class ExampleController {
 
 
     }
-    public static void main(String[] args) throws Exception {
-        System.setProperty(AbstractEnvironment.ACTIVE_PROFILES_PROPERTY_NAME, "production");
-        SpringApplication.run(ExampleController.class, args);
 
-    }
 }
